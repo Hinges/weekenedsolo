@@ -1,0 +1,8 @@
+<p>address work</p>
+
+<button ng-click="getUsers()" class="btn btn-primary btn-lg">Click to see Users</button>
+
+    <div ng-repeat="location in locations">
+       <a ng-click="getAddress()"><p>{{location.name}}</p></a>
+        <p ng-hide="openSesame">{{location.address_street}} {{location.address_city}} {{location.address_state}} {{location.address_zip}}</p>
+    </div>
