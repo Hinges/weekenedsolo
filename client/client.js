@@ -16,47 +16,34 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 }]);
 
-app.controller('MainController', ['$scope', '$http', function($scope, $http){
-
-    $scope.getData = function(){
-        $http.get('/api/users', 'data').then(function(response){
-            $scope.users = response.data;
-        });
-    }
-
-}]);
 app.controller('addressController', ['$scope', '$http', function($scope, $http){
-   var singleUser = $scope.idValue;
-
-        $http.get('/api/location' + singleUser, 'data').then(function(response){
-            console.log(response.data);
-            $scope.locations = response.data;
-
-        });
-
-    //
-    //$scope.getAddress = function() {
-    //    $http.get('/addressView/addresses').then(function (response) {
-    //        $scope.openSesame = false;
-    //        $scope.locations =[];
-    //        $scope.locations = response.data;
+        console.log("button hit");
 
 
-    //    });
-    //};
-
-
-
+        $scope.getAddress = function() {
+            $http.get('/api/location').then(function (response) {
+                console.log(response.data);
+                $scope.locations = response.data;
+                console.log('full response');
+            });
+        }
 }]);
 
 app.controller('dateController', ['$scope', '$http', function($scope, $http){
 
-        var singleUser = $scope.idValue;
+        var singleUser = $scope.id;
         $scope.getOrders = function() {
-            $http.get('/api/orders/' + singleUser, 'data').then(function (response) {
+            $http.get('/api/orders/' + singleUser).then(function (response) {
                 console.log(response.data);
                 $scope.orders = response.data;
             });
         };
 
-}]);
+    $scope.getUsers= function() {
+        console.log('button click');
+        $http.get('/api/users').then(function (response) {
+            console.log(response.data);
+            $scope.users = response.data;
+            console.log('full response');
+        });
+    }}]);

@@ -23,14 +23,14 @@ router.get('/users', function(request, response){
     })
 });
 
-router.get('/location/:id', function(request, response){
+router.get('/location', function(request, response){
     var results = [];
-
+    console.log('request hit');
     pg.connect(connectionString, function(err, client){
         if(err) {
             console.log(err);
         }
-        var query = client.query("SELECT name, address_type, address_street, address_city, address_state FROM addresses JOIN users ON users.id = addresses.user_id WHERE user_id = " + id);
+        var query = client.query("SELECT name, address_type, address_street, address_city, address_state FROM addresses JOIN users ON users.id = addresses.user_id");
 
         query.on('row', function(row){
             results.push(row);

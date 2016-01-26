@@ -1,9 +1,13 @@
 <p>Date works</p>
-
-<button ng-click="getOrders()" class="btn btn-primary btn-lg">Click to see Users</button>
+<input type="date">
+<input type="date">
+<button ng-click="getUsers()" class="btn btn-primary btn-lg">Get Users</button>
+    <ul ng-repeat="user in users"></ul>
+        <li>{{user.name}}</li>
+<button ng-click="getOrders()" class="btn btn-primary btn-lg">Click to see </button>
 <ul ng-repeat="order in orders">
     <li>${{order.amount}}</li>
-    <li>{{order.order_date.slice(0,10)}}</li>
+    <li>{{order.order_date}}</li>
     <li>{{order.address_street}}</li>
     <li>{{order.address_city}} {{order.address_state}}</li>
 </ul>
